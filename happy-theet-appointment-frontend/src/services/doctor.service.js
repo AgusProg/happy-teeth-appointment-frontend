@@ -8,6 +8,10 @@ class DoctorDataService {
   get(id) {
     return http.get(`/doctors/${id}/`);
   }
+
+  signIn (body) {
+    return http.post("/api-token-auth/", body)
+  }
 }
 
 export default new DoctorDataService();
