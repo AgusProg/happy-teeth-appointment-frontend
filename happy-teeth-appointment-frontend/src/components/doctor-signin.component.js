@@ -38,7 +38,10 @@ export default class Login extends Component {
 
         DoctorDataService.signIn(body)
             .then(response => {
-                console.log(response.data);
+                const returnObj = response.data;
+                sessionStorage.setItem('doctorResponse', JSON.stringify(returnObj));
+                this.props.history.push('/dashboard');
+
             })
             .catch(e => {
                 console.log(e);
@@ -62,6 +65,7 @@ export default class Login extends Component {
 
                 <div className="mt-3">
                     <input type="submit" value="Iniciar sesión" className="btn btn-primary btn-block" />
+                    
                 </div>
 
                 <p className="forgot-password text-right"> ¿Olvidaste tu contraseña? </p>

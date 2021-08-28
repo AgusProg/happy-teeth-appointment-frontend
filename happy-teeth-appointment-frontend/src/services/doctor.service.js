@@ -5,8 +5,10 @@ class DoctorDataService {
     return http.get("/doctors");
   }
 
-  get(id) {
-    return http.get(`/doctors/${id}/`);
+  get(id, headers) {
+    return http.get(
+      `/doctors/${id}`, {headers: headers}
+      );
   }
 
   signIn (body) {
