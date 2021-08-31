@@ -1,5 +1,7 @@
 import React from "react";
-import DoctorDataService from "../services/doctor.service";
+import DoctorDataService from "../../services/doctor.service";
+import DoctorMenu from "./doctor-menu.component";
+import DoctorPatientAppointment from "./doctor-patient-appointment.component";
 
 export default class Dashboard extends React.Component {
     constructor(props) {
@@ -18,11 +20,20 @@ export default class Dashboard extends React.Component {
         }
     }
 
-    render() {
+    componentWillMount() {
         this.getDoctor()
-        return (
+    }
 
-"Hi"
+
+    render() {
+
+        return (
+            <div className="container-fluid">
+                <div className="row">
+                    <DoctorMenu></DoctorMenu>
+                    <DoctorPatientAppointment></DoctorPatientAppointment>
+                </div>
+            </div>
         )
     }
 

@@ -2,21 +2,22 @@ import './App.css';
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Dashboard from './components/dashboard-doctor.component';
+import Dashboard from './components/doctors/doctor-dashboard.component';
 
 
-import Login from "./components/doctor-signin.component";
-import SignUp from "./components/doctor-signup.component";
-import SignInSignUpButton from "./components/signin-signup-button.component";
+import Login from "./components/doctors/doctor-signin.component";
+import SignUp from "./components/doctors/doctor-signup.component";
+import SignInSignUpButton from "./components/common/signin-signup-button.component";
 
 class App extends React.Component {
+
   render() {
     return (
       <Router>
         <div className="App">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-              <a className="navbar-brand"> 
+              <a className="navbar-brand">
                 <Link to={"/"}>
                   <img src="https://via.placeholder.com/180x62?text=Happy+Teeth" className="img-fluid" alt="Logo"></img>
                 </Link>
@@ -37,18 +38,15 @@ class App extends React.Component {
             </div>
           </nav>
 
-          <div className="auth-wrapper">
-            <div className="auth-inner">
-              <Switch>
-                <Route exact path="/" component={Login} />
-                <Route path="/sign-in" component={Login} />
-                <Route path="/sign-up" component={SignUp} />
-                
-              </Switch>
-            </div>
-          </div>
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route path="/sign-in" component={Login} />
+            <Route path="/sign-up" component={SignUp} />
+          </Switch>
+
+          <Route path="/dashboard" component={Dashboard} />
         </div>
-        <Route path="/dashboard" component={Dashboard} />
+
       </Router>
     );
   }

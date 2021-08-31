@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DoctorDataService from "../services/doctor.service";
+import DoctorDataService from "../../services/doctor.service";
 
 export default class Login extends Component {
     constructor(props) {
@@ -41,7 +41,6 @@ export default class Login extends Component {
                 const returnObj = response.data;
                 sessionStorage.setItem('doctorResponse', JSON.stringify(returnObj));
                 this.props.history.push('/dashboard');
-
             })
             .catch(e => {
                 console.log(e);
@@ -50,26 +49,30 @@ export default class Login extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <h3>Inicio de sesión</h3>
+            <div className="auth-wrapper">
+                <div className="auth-inner">
+                    <form onSubmit={this.handleSubmit}>
+                        <h3>Inicio de sesión</h3>
 
-                <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" className="form-control" onChange={this.handleChangeEmail} />
+                        <div className="form-group">
+                            <label>Email</label>
+                            <input type="email" className="form-control" onChange={this.handleChangeEmail} />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Contraseña</label>
+                            <input type="password" className="form-control" onChange={this.handleChangePassword} />
+                        </div>
+
+                        <div className="mt-3">
+                            <input type="submit" value="Iniciar sesión" className="btn btn-primary btn-block" />
+
+                        </div>
+
+                        <p className="forgot-password text-right"> ¿Olvidaste tu contraseña? </p>
+                    </form>
                 </div>
-
-                <div className="form-group">
-                    <label>Contraseña</label>
-                    <input type="password" className="form-control" onChange={this.handleChangePassword} />
-                </div>
-
-                <div className="mt-3">
-                    <input type="submit" value="Iniciar sesión" className="btn btn-primary btn-block" />
-                    
-                </div>
-
-                <p className="forgot-password text-right"> ¿Olvidaste tu contraseña? </p>
-            </form>
+            </div>
         );
     }
 }
