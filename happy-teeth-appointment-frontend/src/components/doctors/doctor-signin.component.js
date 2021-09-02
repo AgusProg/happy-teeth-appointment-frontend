@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DoctorDataService from "../../services/doctor.service";
+import '../../css/auth/auth.css'
 
 export default class Login extends Component {
     constructor(props) {
@@ -49,27 +50,26 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div className="auth-wrapper">
+            <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
                 <div className="auth-inner">
                     <form onSubmit={this.handleSubmit}>
-                        <h3>Inicio de sesión</h3>
+                        <h4>Inicio de sesión en Happy Teeth</h4>
 
-                        <div className="form-group">
-                            <label>Email</label>
-                            <input type="email" className="form-control" onChange={this.handleChangeEmail} />
+                        <div className="form-group mb-3">
+                            <input type="email" placeholder="Email" className="form-control" onChange={this.handleChangeEmail} />
                         </div>
 
                         <div className="form-group">
-                            <label>Contraseña</label>
-                            <input type="password" className="form-control" onChange={this.handleChangePassword} />
+                            <input type="password" placeholder="Contraseña" className="form-control" onChange={this.handleChangePassword} />
                         </div>
 
-                        <div className="mt-3">
+                        <p className="forgot-password text-left"> ¿Olvidaste tu contraseña? </p>
+
+                        <div className="mt-2">
                             <input type="submit" value="Iniciar sesión" className="btn btn-primary btn-block" />
 
                         </div>
 
-                        <p className="forgot-password text-right"> ¿Olvidaste tu contraseña? </p>
                     </form>
                 </div>
             </div>

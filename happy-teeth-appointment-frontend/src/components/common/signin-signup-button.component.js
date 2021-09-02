@@ -1,20 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class SignInSignUpButton extends React.Component {
     constructor(props) {
         super(props)
+        
 
-        this.handleSignInClick = this.handleSignInClick.bind(this);
-        this.handleSignUpClick = this.handleSignUpClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.state = { isLoggedIn: false };
     }
 
-    handleSignInClick() {
-        this.setState({ isLoggedIn: true });
+
+    handleClick() {
+        if (this.state.isLoggedIn) {
+            this.setState({ isLoggedIn: false });
+        } else {
+            this.setState({ isLoggedIn: true });
+        }
+
     }
-    handleSignUpClick() {
-        this.setState({ isLoggedIn: false });
+
+    getButton(text) {
+        return (
+            <button onClick={this.handleClick} className="btn btn-outline-success"> {text} </button>
+
+        )
     }
 
 
@@ -22,16 +32,12 @@ export default class SignInSignUpButton extends React.Component {
         const isLoggedIn = this.state.isLoggedIn;
         if (isLoggedIn) {
             return (
-                <Link className="nav-link" to={"/sign-in"}>
-                    <button  onClick={this.handleSignUpClick} className="btn btn-outline-success"> Iniciar sesión </button>
-                </Link>
-                );
+                <Link to={"/sign-in"}> {this.getButton("Iniciar Sesión")} </Link>
+            );
         } else {
             return (
-                <Link className="nav-link" to={"/sign-up"}>
-                    <button onClick={this.handleSignInClick} className="btn btn-outline-success"> Registrarse </button>
-                </Link>
-                );
+                <Link to={"/sign-up"}> { this.getButton("Registrarse") } </Link>
+            );
         }
 
 

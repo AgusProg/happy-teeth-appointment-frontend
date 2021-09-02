@@ -30,7 +30,9 @@ export default class Dashboard extends React.Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <DoctorMenu></DoctorMenu>
+                    <DoctorMenu
+                    currentDoctor={this.state.currentDoctor}
+                    ></DoctorMenu>
                     <DoctorPatientAppointment></DoctorPatientAppointment>
                 </div>
             </div>

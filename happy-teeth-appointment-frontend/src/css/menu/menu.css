@@ -65,6 +65,32 @@ a, a:hover, a:focus {
     transform-origin: bottom left;
 }
 
+.doctor-name {
+    color: #272b41;
+    font-size: 0.9375rem;
+}
+
+.doctor-details h5 {
+    color: #a6a6a6;
+    font-size: 13px;
+} 
+
+.doctor-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.doctor-profile {
+    
+    display: inline-block;
+    margin: 0 0 15px;
+    width: auto;
+    padding: 8px;
+    background-color: #f7f7f7;
+    border-radius: 50%;
+}
+
 #sidebar.active {
     margin-left: -250px;
     transform: rotateY(100deg);

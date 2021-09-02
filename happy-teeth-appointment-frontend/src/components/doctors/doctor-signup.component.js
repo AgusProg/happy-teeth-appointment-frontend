@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DoctorDataService from "../../services/doctor.service";
+import '../../css/auth/auth.css'
 
 export default class SignUp extends Component {
 
@@ -31,7 +32,7 @@ export default class SignUp extends Component {
     }
 
     signUp() {
-        var body = {
+        var signUpBody = {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
@@ -40,9 +41,22 @@ export default class SignUp extends Component {
             membership_number: this.state.membershipNumber
         }
 
-        DoctorDataService.signUp(body)
-            .then(response => {
-                console.log(response.data);
+        var signInBody = {
+            username: this.state.email,
+            password: this.state.password
+        }
+
+        DoctorDataService.signUp(signUpBody)
+            .then(() => {
+                DoctorDataService.signIn(signInBody)
+                .then(response => {
+                    const returnObj = response.data;
+                    sessionStorage.setItem('doctorResponse', JSON.stringify(returnObj));
+                    this.props.history.push('/dashboard');
+                })
+                .catch(e => {
+                    console.log(e);
+                });
             })
             .catch(e => {
                 console.log(e);
@@ -83,39 +97,33 @@ export default class SignUp extends Component {
 
     render() {
         return (
-            <div className="auth-wrapper">
+            <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
                 <div className="auth-inner">
                     <form onSubmit={this.handleSubmit}>
                         <h3>Registro</h3>
 
                         <div className="form-group">
-                            <label>Nombre</label>
-                            <input type="text" className="form-control" value={this.state.name} onChange={this.handleChangeName} />
+                            <input type="text" placeholder="Nombre" className="form-control" value={this.state.name} onChange={this.handleChangeName} />
                         </div>
 
-                        <div className="form-group">
-                            <label>Primer apellido</label>
-                            <input type="text" className="form-control" value={this.state.firstSurname} onChange={this.handleChangeFirstSurname} />
+                        <div className="form-group mt-3">
+                            <input type="text" placeholder="Primer apellido" className="form-control" value={this.state.firstSurname} onChange={this.handleChangeFirstSurname} />
                         </div>
 
-                        <div className="form-group">
-                            <label>Segundo apellido</label>
-                            <input type="text" className="form-control" value={this.state.secondSurname} onChange={this.handleChangeSecondSurname} />
+                        <div className="form-group mt-3">
+                            <input type="text" placeholder="Segundo apellido" className="form-control" value={this.state.secondSurname} onChange={this.handleChangeSecondSurname} />
                         </div>
 
-                        <div className="form-group">
-                            <label>Email</label>
-                            <input type="email" className="form-control" value={this.state.email} onChange={this.handleChangeEmail} />
+                        <div className="form-group mt-3">
+                            <input type="email" placeholder="Email" className="form-control" value={this.state.email} onChange={this.handleChangeEmail} />
                         </div>
 
-                        <div className="form-group">
-                            <label>Contraseña</label>
-                            <input type="password" className="form-control" value={this.state.password} onChange={this.handleChangePassword} />
+                        <div className="form-group mt-3">
+                            <input type="password" placeholder="Contraseña" className="form-control" value={this.state.password} onChange={this.handleChangePassword} />
                         </div>
 
-                        <div className="form-group">
-                            <label>Numero de colegiado</label>
-                            <input type="text" className="form-control" value={this.state.membershipNumber} onChange={this.handleChangeMembershipNumber} />
+                        <div className="form-group mt-3">
+                            <input type="text" placeholder="Numero de colegiado" className="form-control" value={this.state.membershipNumber} onChange={this.handleChangeMembershipNumber} />
                         </div>
 
                         <div className="mt-3">
