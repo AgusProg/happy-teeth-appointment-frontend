@@ -1,1 +1,1 @@
-# happy-theet-appointment-frontend
+# happy-teeth-appointment-frontend
