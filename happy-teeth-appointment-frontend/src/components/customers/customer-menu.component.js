@@ -1,7 +1,9 @@
 import React from "react";
-import './doctor-menu.css'
+import './customer-menu.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBirthdayCake, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons'
 
-export default class DoctorMenu extends React.Component {
+export default class CustomerMenu extends React.Component {
 
     render() {
         return (
@@ -11,9 +13,18 @@ export default class DoctorMenu extends React.Component {
                         <div className="common-profile">
                             <img className="common-img" src="https://www.w3schools.com/howto/img_avatar.png" />
                         </div>
-                        <h3 className="common-name">Dr. {this.props.currentDoctor.name + " " + this.props.currentDoctor.first_surname + " " + this.props.currentDoctor.second_surname}</h3>
+                        <h3 className="common-name">{this.props.currentCustomer.name + " " + this.props.currentCustomer.first_surname + " " + this.props.currentCustomer.second_surname}</h3>
                         <div className="common-details">
-                            <h5 className="mb-0">Odontólogo</h5>
+                            <h5 className="mb-0">
+                                <FontAwesomeIcon className="me-1" icon={faBirthdayCake} />
+                                1 de Junio de 1996
+                            </h5>
+                        </div>
+                        <div className="common-details">
+                            <h5 className="mb-0">
+                                <FontAwesomeIcon className="me-1" icon={faMapMarkedAlt} />
+                                Madrid, España 28922
+                            </h5>
                         </div>
                     </div>
 
@@ -22,16 +33,13 @@ export default class DoctorMenu extends React.Component {
                             <a>Panel de control</a>
                         </li>
                         <li>
-                            <a>Citas</a>
-                        </li>
-                        <li>
-                            <a>Mis pacientes</a>
-                        </li>
-                        <li>
                             <a>Opiniones</a>
                         </li>
                         <li>
                             <a>Mensajes</a>
+                        </li>
+                        <li>
+                            <a>Ajustes</a>
                         </li>
                         <li>
                             <a>Cerrar Sesión</a>

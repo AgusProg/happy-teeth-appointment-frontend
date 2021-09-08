@@ -1,9 +1,8 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Link} from "react-router-dom";
 import SignInSignUpButton from "./signin-signup-button.component";
 
 export default class Navbar extends React.Component {
-
 
     render() {
         return (

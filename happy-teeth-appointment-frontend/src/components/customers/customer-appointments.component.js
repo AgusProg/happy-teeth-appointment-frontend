@@ -1,11 +1,11 @@
 import React from "react";
-import './doctor-patient-appointment.css'
+import './customer-appointments.css'
 
-export default class DoctorPatientAppointment extends React.Component {
+export default class CustomerAppointments extends React.Component {
     render() {
         return (
             <div className="col-md-9 mt-3">
-                <h4 className="mb-4">Citas de pacientes</h4>
+                <h4 className="mb-4">Citas</h4>
                 <div className="row">
                     <div role="tabpanel" aria-hidden="false" className="fade nav-item tab-pane active show">
                         <div className="card card-table">
@@ -13,9 +13,11 @@ export default class DoctorPatientAppointment extends React.Component {
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Paciente</th>
+                                            <th scope="col"></th>
+                                            <th scope="col">Doctor</th>
                                             <th scope="col">Fecha de la cita</th>
-                                            <th scope="col">Razon de la cita</th>
+                                            <th scope="col">Fecha de confirmación de la cita</th>
+                                            <th scope="col">Estado</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
@@ -23,20 +25,23 @@ export default class DoctorPatientAppointment extends React.Component {
                                         <tr>
                                             <th scope="row">1</th>
                                             <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
+                                            <td>10/09/2021</td>
+                                            <td>08/09/2021</td>
+                                            <td>Pendiente</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">2</th>
                                             <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
+                                            <td>10/09/2021</td>
+                                            <td>08/09/2021</td>
+                                            <td>Pendiente</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">3</th>
                                             <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
+                                            <td>10/09/2021</td>
+                                            <td>08/09/2021</td>
+                                            <td>Confirmada</td>
                                         </tr>
                                     </tbody>
                                 </table>

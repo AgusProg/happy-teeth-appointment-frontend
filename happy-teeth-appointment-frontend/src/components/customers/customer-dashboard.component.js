@@ -1,27 +1,27 @@
 import React from "react";
-import DoctorDataService from "../../services/doctor.service";
-import DoctorMenu from "./doctor-menu.component";
-import DoctorPatientAppointment from "./doctor-patient-appointment.component";
+import CustomerDataService from "../../services/customer.service";
+import CustomerMenu from "./customer-menu.component";
+import CustomerAppointmentsAppointment from "./customer-appointments.component";
+import CustomerAppointments from "./customer-appointments.component";
 
-export default class DoctorDashboard extends React.Component {
+export default class CustomerDashboard extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            currentDoctor: {
+            currentCustomer: {
                 id: -1,
                 name: '',
                 email: '',
                 password: '',
                 first_surname: '',
                 second_surname: '',
-                membership_number: ''
             }
         }
     }
 
     componentWillMount() {
-        this.getDoctor()
+        this.getCustomer()
     }
 
 
@@ -30,32 +30,31 @@ export default class DoctorDashboard extends React.Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <DoctorMenu
-                    currentDoctor={this.state.currentDoctor}
-                    ></DoctorMenu>
-                    <DoctorPatientAppointment></DoctorPatientAppointment>
+                    <CustomerMenu
+                    currentCustomer={this.state.currentCustomer}
+                    ></CustomerMenu>
+                    <CustomerAppointments></CustomerAppointments>
                 </div>
             </div>
         )
     }
 
-    getDoctor() {
-        var doctorResponse = JSON.parse(sessionStorage.getItem('doctorResponse'))
+    getCustomer() {
+        var customerResponse = JSON.parse(sessionStorage.getItem('customerResponse'))
         var headers = {
-            Authorization: 'Token ' + doctorResponse['token']
+            Authorization: 'Token ' + customerResponse['token']
         }
 
-        DoctorDataService.get(doctorResponse['user_id'], headers)
+        CustomerDataService.get(customerResponse['user_id'], headers)
             .then(response => {
                 this.setState({
-                    currentDoctor: {
+                    currentCustomer: {
                         id: response.data['id'],
                         name: response.data['name'],
                         email: response.data['email'],
                         password: response.data['password'],
                         first_surname: response.data['first_surname'],
-                        second_surname: response.data['second_surname'],
-                        membership_number: response.data['membership_number']
+                        second_surname: response.data['second_surname']
                     }
                 })
             })
