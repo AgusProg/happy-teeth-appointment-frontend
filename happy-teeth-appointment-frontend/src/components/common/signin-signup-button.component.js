@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class SignInSignUpButton extends React.Component {
     constructor(props) {
@@ -32,15 +32,13 @@ export default class SignInSignUpButton extends React.Component {
         const isLoggedIn = this.state.isLoggedIn;
         if (isLoggedIn) {
             return (
-                <Link to={"/sign-in"}> {this.getButton("Iniciar Sesión")} </Link>
+                <Link to={"/doctor/sign-in"}> {this.getButton("Iniciar Sesión")} </Link>
             );
         } else {
             return (
-                <Link to={"/sign-up"}> { this.getButton("Registrarse") } </Link>
+                <Link to={"/doctor/sign-up"}> { this.getButton("Registrarse") } </Link>
             );
         }
-
-
 
     }
 

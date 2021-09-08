@@ -2,29 +2,32 @@ import './App.css';
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Dashboard from './components/doctors/doctor-dashboard.component';
+import DoctorDashboard from './components/doctors/doctor-dashboard.component';
 
-
-import Login from "./components/doctors/doctor-signin.component";
-import SignUp from "./components/doctors/doctor-signup.component";
 import Navbar from './components/common/navbar.component';
-
+import DoctorSignIn from './components/doctors/doctor-signin.component';
+import DoctorSignUp from './components/doctors/doctor-signup.component';
+import CustomerSignIn from './components/customers/customer-signin.component';
+import CustomerSignUp from './components/customers/customer-signup.component';
+import CustomerDashboard from './components/customers/customer-dashboard.component';
 
 class App extends React.Component {
 
   render() {
     return (
-        <Router>
-          <Navbar></Navbar>
-          <Switch>
-            <Route exact path="/" component={Login} />
-            <Route path="/sign-in" component={Login} />
-            <Route path="/sign-up" component={SignUp} />
-          </Switch>
+      <Router>
+        <Navbar></Navbar>
+        <Switch>
+          <Route path="/doctor/sign-in" component={DoctorSignIn} />
+          <Route path="/doctor/sign-up" component={DoctorSignUp} />
 
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/customer/sign-in" component={CustomerSignIn} />
+          <Route path="/customer/sign-up" component={CustomerSignUp} />
+        </Switch>
 
-        </Router>
+        <Route path="/doctor/dashboard" component={DoctorDashboard} />
+        <Route path="/customer/dashboard" component={CustomerDashboard} />
+      </Router>
     );
   }
 }

@@ -1,18 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
-
 body {
-  background: #f8f9fa !important;
-
+    background: #f8f9fa !important;
 }
 
-h1,h2,h3,h4,h5,h6,label,span {
-  font-weight: 500;
-  font-family: 'Fira Sans', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+span {
+    font-weight: 500;
+    font-family: 'Fira Sans', sans-serif;
 }
 
-body, html, .App, #root, .auth-wrapper {
-  width: 100%;
+body,
+html,
+.App,
+#root,
+.auth-wrapper {
+    width: 100%;
 }
-
-
-

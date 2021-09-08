@@ -1,13 +1,13 @@
 import http from "../http-common";
 
-class DoctorDataService {
+class CustomerDataService {
   getAll() {
-    return http.get("/doctors");
+    return http.get("/customers");
   }
 
   get(id, headers) {
     return http.get(
-      `/doctors/${id}`, {headers: headers}
+      `/customers/${id}`, {headers: headers}
       );
   }
 
@@ -16,10 +16,8 @@ class DoctorDataService {
   }
 
   signUp (body) {
-    return http.post("/doctors/", body)
-
-    
+    return http.post("/customers/", body)
   }
 }
 
-export default new DoctorDataService();
+export default new CustomerDataService();

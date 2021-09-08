@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import DoctorDataService from "../../services/doctor.service";
-import './doctor-signin-signup.css'
+import CustomerDataService from "../../services/customer.service";
+import './customer-signin-signup.css'
 
-export default class DoctorSignIn extends Component {
+export default class CustomerSignIn extends Component {
     constructor(props) {
         super(props);
 
@@ -37,11 +37,11 @@ export default class DoctorSignIn extends Component {
             password: this.state.password
         }
 
-        DoctorDataService.signIn(body)
+        CustomerDataService.signIn(body)
             .then(response => {
                 const returnObj = response.data;
-                sessionStorage.setItem('doctorResponse', JSON.stringify(returnObj));
-                this.props.history.push('/dashboard');
+                sessionStorage.setItem('customerResponse', JSON.stringify(returnObj));
+                this.props.history.push('/customer/dashboard');
             })
             .catch(e => {
                 console.log(e);
@@ -53,7 +53,7 @@ export default class DoctorSignIn extends Component {
             <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
                 <div className="auth-inner">
                     <form onSubmit={this.handleSubmit}>
-                        <h4>Inicio de sesión para</h4>
+                        <h4>Inicio de sesión para pacientes</h4>
 
                         <div className="form-group mb-3">
                             <input type="email" placeholder="Email" className="form-control" onChange={this.handleChangeEmail} />

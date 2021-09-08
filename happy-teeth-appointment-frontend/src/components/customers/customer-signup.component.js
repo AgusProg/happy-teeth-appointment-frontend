@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import DoctorDataService from "../../services/doctor.service";
-import './doctor-signin-signup.css'
+import CustomerDataService from "../../services/customer.service";
+import './customer-signin-signup.css'
 
-export default class DoctorSignUp extends Component {
+export default class CustomerSignUp extends Component {
 
     constructor(props) {
         super(props);
@@ -21,7 +21,6 @@ export default class DoctorSignUp extends Component {
         this.handleChangeSecondSurname = this.handleChangeSecondSurname.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
-        this.handleChangeMembershipNumber = this.handleChangeMembershipNumber.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -38,7 +37,6 @@ export default class DoctorSignUp extends Component {
             password: this.state.password,
             first_surname: this.state.firstSurname,
             second_surname: this.state.secondSurname,
-            membership_number: this.state.membershipNumber
         }
 
         var signInBody = {
@@ -46,13 +44,13 @@ export default class DoctorSignUp extends Component {
             password: this.state.password
         }
 
-        DoctorDataService.signUp(signUpBody)
+        CustomerDataService.signUp(signUpBody)
             .then(() => {
-                DoctorDataService.signIn(signInBody)
+                CustomerDataService.signIn(signInBody)
                 .then(response => {
                     const returnObj = response.data;
-                    sessionStorage.setItem('doctorResponse', JSON.stringify(returnObj));
-                    this.props.history.push('/doctor/dashboard');
+                    sessionStorage.setItem('customerResponse', JSON.stringify(returnObj));
+                    this.props.history.push('/customer/dashboard');
                 })
                 .catch(e => {
                     console.log(e);
@@ -88,19 +86,13 @@ export default class DoctorSignUp extends Component {
         this.setState({ password: event.target.value });
     }
 
-
-    handleChangeMembershipNumber(event) {
-        event.preventDefault();
-        this.setState({ membershipNumber: event.target.value });
-    }
-
-
+    
     render() {
         return (
             <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
                 <div className="auth-inner">
                     <form onSubmit={this.handleSubmit}>
-                        <h3>Registro de doctores</h3>
+                        <h3>Registro de pacientes</h3>
 
                         <div className="form-group">
                             <input type="text" placeholder="Nombre" className="form-control" value={this.state.name} onChange={this.handleChangeName} />
@@ -120,10 +112,6 @@ export default class DoctorSignUp extends Component {
 
                         <div className="form-group mt-3">
                             <input type="password" placeholder="Contraseña" className="form-control" value={this.state.password} onChange={this.handleChangePassword} />
-                        </div>
-
-                        <div className="form-group mt-3">
-                            <input type="text" placeholder="Numero de colegiado" className="form-control" value={this.state.membershipNumber} onChange={this.handleChangeMembershipNumber} />
                         </div>
 
                         <div className="mt-3">
